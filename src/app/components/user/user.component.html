@@ -1,0 +1,201 @@
+
+<nav class="navbar navbar-expand-lg dark-light " style="height: 70px;background-color: rgba(0, 0, 0, 0.34);">
+  <span class="navbar-brand mb-0 h2" style=" color: white;font-weight: bolder;">
+    <h2>.FORMTEAM</h2> </span>
+ 
+   
+</nav>
+      <div class="container"  >
+        <div class="row  ">
+          <div class="  col-md-3 border g-3" id="col1" style="background-color: rgba(255, 255, 255, 0.563);">
+              <div class="card-body ">
+                <div class="p-2">
+                  <h5><fa-icon [icon]="faFilter" size="lg"></fa-icon>FILTER USERS</h5>
+              </div>
+            <div class=" form-outline-lg  mb-4 ">
+              <input type="search" class="form-control"  [(ngModel)]="searchName" placeholder="Name" id="datatable-search-input">
+            </div>
+            <div class="form-group m-4">
+              <select id="inputState" aria-labelledby="Gender"
+                    class="form-control " >
+                <option  selected>Male</option>
+                <option>Female</option>
+              </select>
+            </div> 
+            <div class="form-group m-4">
+              <select id="inputState" class="form-control" placeholder="Domain">
+                <option >Finance</option>
+                <option >Business Development</option>
+                <option >Marketing</option>
+                <option >IT</option>
+                <option >UI Designing</option>
+                <option >Management</option>
+                <option>sales</option>
+              </select>
+              
+            </div>
+            <div class="form-group m-4">
+              <select id="inputState" class="form-control"  placeholder="Availablity">
+                <option selected>Available</option>
+                <option>unavailable</option>
+              </select>
+              <div class=" m-3 col-sm-8 ">
+                <a href="#"  class="btn btn-outline-secondary">Apply</a>
+
+                </div>
+
+                <!-- <form class="justify-content-center">
+                  <div class="form-group m-2">
+                     <input type="text" class="form-control" id="exampleInputEmail1" 
+                     placeholder="ex : Team A">
+                  </div>
+                  <button type="submit" id="button1"class="btn btn-outline-secondary" (click)= "newcard()">CREATE</button>
+                </form> -->
+
+            </div>
+            </div>
+          </div>
+          <div id="col2" class="col-sm-5 g-4 "   >
+          
+            <ng-container *ngFor="let item of users | filter:searchName:searchGender " >
+            <div class="card body " id="card1"
+            style="background-color: rgba(255, 255, 255, 0.563);" >
+            <div class="row ">
+              
+              <div class="col-sm-4 ">
+              
+                  <img id="image" 
+                  src= "{{item.avatar}}"
+                  style="background-color:white;max-width:200px; max-height: 200px ;"   
+                  class="rounded-circle img-fluid mx-auto d-block" alt="...">
+                  
+              </div>
+              <div class="col  " >
+                <div class="row no-gutters  py-3 "  >
+                  <div class=".col-md-8" id="cardrow"  >
+                    <h3 >{{item.first_name}} {{item.last_name}}</h3>
+                  </div>
+                
+                  <!-- Force next columns to break to new line at md breakpoint and up -->
+                  <div class="w-100 d-none d-md-block"></div>
+              
+                  <div class="col-sm-4"  >
+                    <p class="card-text" id="cardrow"  *ngIf="item?.available">Available</p>
+                    <p class="card-text" id="cardrow"  *ngIf="item.available === false">Unavailable</p>
+
+                  </div>
+                  <div class="col-sm-4" >
+                    <p class="card-text" id="cardrow" >{{item.gender}}</p>
+
+                  </div>
+                  <div class="col-sm-4 d-flex align-items-start" >
+                    <p class="card-text" id="cardrow" >
+                      <p class="card-text" >{{item.domain}}</p>
+                     
+                  </div>
+                 
+                  <div class=" container "  >
+                    <div class="row ">
+                      <div class="col">
+                        <p class="card-text" id="cardrow" >{{item.email}}</p>
+                      </div>
+                      
+                    </div>
+                    <div class="col d-flex justify-content-end " style="padding-right: 2rem;">
+                      <button href="#" type="button" (click) = "adduser(item)"
+                      style="border: 1px solid black" class="btn btn-outline-secondary">Add user</button>
+                    </div>
+
+                  </div>
+                  
+                  
+                </div>
+                
+         
+              
+          
+            
+    
+                </div>
+              </div>
+              
+            </div>
+          </ng-container>
+        
+          </div>
+          
+          <div class="p-2 col-sm-4 border g-3" id="con3" style="background-color: rgba(225, 225, 225, 0.563); color: black;">
+          <div class="con " ><!--*ngFor="let team of teams"-->
+
+          
+            <div class="d-flex flex-row-reverse" >
+              <button class="m-2" style="display:none;"> <fa-icon [icon]="faXmark" size="lg" ></fa-icon></button>
+              <div class="p-2"><h4 class="modal-title" id="exampleModalLabel">
+                Team A
+              </h4></div>
+            </div>
+         
+          <div class="modal-body">
+            <table class="table table-image">
+              <thead  style="color: black;">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Assignee</th>
+                  <th scope="col">Domain</th>
+                  <th scope="col">Availability</th> 
+                  <th scope="col" class="col"></th>
+                </tr>
+              </thead>
+                <tbody *ngFor="let card of cards" >
+                <tr>
+                  <td class="w-25">
+                    <img src="{{card.avatar}}" style="height: 40px;" class="rounded-circle shadow-4-strong" alt="Sheep">
+  
+                  </td>
+                  
+                 
+                  <td class="qty">{{card.first_name}}{{card.last_name}}
+                </td>
+                 
+                  <td>{{card.domain}}</td>
+                  <td style="width:40px">{{card.available}}</td>
+                  <td > <button class="close "  (click)=  "removeUser(card)" ><fa-icon [icon]="faXmark" size="lg"></fa-icon></button>
+                  </td>
+  
+                </tr>
+                
+              </tbody>
+  
+   </table>
+  </div>
+  </div>
+  
+
+          </div>
+         
+        </div>
+        <div class="d-flex justify-content-center">
+       
+        </div>
+        <!-- <nav aria-label="...">
+          <ul class="pagination" style="    opacity: 80%;
+          ">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">2 <span class="sr-only"></span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav> -->
+      </div>
+         
+          
+  
+
+    

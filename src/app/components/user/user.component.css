@@ -1,0 +1,126 @@
+#image{
+    margin:1rem;
+    width:125px;
+    height:125px
+}
+
+.card-body{
+  padding: 5rem;
+}
+#button1{
+  margin-left: 3rem;
+  border: 1px solid black;
+}
+nav{
+  align-items: center;
+  justify-content: center;
+}
+
+
+#col2{max-height: 38rem;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+
+#col2::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+
+.con{
+    max-height: 38rem;  
+     overflow-y:auto;
+     overflow-x:auto;
+}
+
+
+.con::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.con::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.con::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.con::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+
+  .pagination {
+    margin-top: 2rem;
+    margin-left: 28rem;
+  }
+  button{
+    text-decoration: none;
+    border: none;
+  }
+
+  @media (min-width: 768px) and (max-width:992px){
+
+    #col1{
+      width: 30%;
+    }
+    #col2{
+      width: 70%;
+    }
+
+    .card-body{
+      padding: 1rem;
+    }
+
+    .container{
+      padding-bottom: 2rem;
+    }
+    #con3{
+      background-color: aqua;
+      z-index: 1;
+      width: 90%;
+      margin-left: 1rem;
+    }
+  }
+
+@media (max-width: 480px) {
+  #col2{
+    padding :2rem;
+   
+}
+
+.con{
+  overflow-x: auto;
+}
+
+ #cardrow{
+  margin-left: 3rem
+  
+  }
+
+  .container{
+    padding-bottom: 2rem;
+  }
+  #col2{
+    margin-left: 1rem;
+    align-items: center;
+    max-width: 90%;
+  }
+
+  #con3{
+    width:90%;
+    margin-left: 1rem;
+  }
+ .con{
+  overflow-x: auto;
+ }
+
+}
+
+
