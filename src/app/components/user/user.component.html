@@ -16,14 +16,22 @@
               <input type="search" class="form-control"  [(ngModel)]="searchName" placeholder="Name" id="datatable-search-input">
             </div>
             <div class="form-group m-4">
-              <select id="inputState" aria-labelledby="Gender"
+              <select [(ngModel)]="searchGender" id="inputState" 
                     class="form-control " >
-                <option  selected>Male</option>
+                    <option value="" selected disabled>Please select</option>
+                <option  >Male</option>
                 <option>Female</option>
+                <option>Agender</option>
+                <option>Bigender</option>
+                <option>Polygender</option>
+                <option>Non-binary</option>
+                <option>Genderfluid</option>
               </select>
             </div> 
             <div class="form-group m-4">
-              <select id="inputState" class="form-control" placeholder="Domain">
+              <select id="inputState" [(ngModel)]="searchDomain" class="form-control" placeholder="Domain">
+                <option value="" selected disabled>Please select</option>
+
                 <option >Finance</option>
                 <option >Business Development</option>
                 <option >Marketing</option>
@@ -35,12 +43,14 @@
               
             </div>
             <div class="form-group m-4">
-              <select id="inputState" class="form-control"  placeholder="Availablity">
-                <option selected>Available</option>
-                <option>unavailable</option>
+              <select id="inputState" [(ngModel)]="searchAvailable" class="form-control"  placeholder="Availablity">
+                <option value="" selected disabled>Please select</option>
+
+                <option >Available</option>
+                <option>Unavailable</option>
               </select>
               <div class=" m-3 col-sm-8 ">
-                <a href="#"  class="btn btn-outline-secondary">Apply</a>
+                <a href="#" (click)= "apply()"  class="btn btn-outline-secondary">Apply</a>
 
                 </div>
 
@@ -57,7 +67,7 @@
           </div>
           <div id="col2" class="col-sm-5 g-4 "   >
           
-            <ng-container *ngFor="let item of users | filter:searchName:searchGender " >
+            <ng-container *ngFor="let item of search   " >
             <div class="card body " id="card1"
             style="background-color: rgba(255, 255, 255, 0.563);" >
             <div class="row ">

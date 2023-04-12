@@ -11,70 +11,8 @@ import{ faPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-
-  cards : any = [];
-  id : any;
-  pagination:number=0;
-  allstudents:any;
-  searchName:any;
-  // searchAvailable = "available";
-  // searchDomain ="domain";
-   searchGender:any;
-
-  faFilter = faFilter;
-  faXmark = faXmark;
-  faPlus =faPlus;
-  ///teams: Cards[] = [];
-//  ngOnIt(){
-//   this.fetchStudents();
-//   console.log(this.fetchStudents());
-//  }
-//  fetchStudents() {
-//    this.users;
-//     this.allstudents = this.users.length;
-//   };
-
-// renderPage(event: number) {
-//   this.pagination = event;
+  constructor(){}
   
-// }
-
-
-
-
- newcard(){
-  ///this.teams.push(new Cards());
- }
-
- adduser(item:any){
-  this.id = this.cards.map((data:any) => data.id)
-  var id = this.id.slice(-1);
-  console.log(this.cards)
-  if(this.cards.length === 0 || item.id != id){
-    this.cards.push(item);
-    console.log(this.users)
-  }
-}
-
-// find():any{
-//    this.users.map(a => 
-
-//    { if(a.gender === this.searchGender){     
-//       console.log(a)
-//         }
-//       });
-   
-// }
-removeUser(card:any){
-    var num = card.id;
-     var index = this.cards.findIndex((item: any) => item.id === num);         
-    this.cards.splice(index,1);
-    return this.cards;
-  
-  }
-
-
-
   users= [{"id":1,"first_name":"Anet","last_name":"Doe","email":"adoe0@comcast.net","gender":"Female","avatar":"https://robohash.org/sintessequaerat.png?size=50x50&set=set1","domain":"Sales","available":false},
   {"id":2,"first_name":"Honoria","last_name":"Caughte","email":"hcaughte1@google.com.br","gender":"Female","avatar":"https://robohash.org/temporibusporrolaboriosam.png?size=50x50&set=set1","domain":"Finance","available":true},
   {"id":3,"first_name":"Wiley","last_name":"Boarder","email":"wboarder2@xing.com","gender":"Male","avatar":"https://robohash.org/laboriosamdolorepossimus.png?size=50x50&set=set1","domain":"Marketing","available":false},
@@ -154,5 +92,99 @@ removeUser(card:any){
   {"id":77,"first_name":"Lolly","last_name":"Steffens","email":"lsteffens24@elegantthemes.com","gender":"Female","avatar":"https://robohash.org/quaecumquam.png?size=50x50&set=set1","domain":"Business Development","available":false},
   {"id":78,"first_name":"Ricki","last_name":"Denisovich","email":"rdenisovich25@mediafire.com","gender":"Male","avatar":"https://robohash.org/istedelectusaliquam.png?size=50x50&set=set1","domain":"Management","available":false}]
 
+
+  search =this.users.map((item:any) => item);
+  cards : any = [];
+  id : any;
+  pagination:number=0;
+  allstudents:any;
+  searchName:any;
+  searchAvailable = "available";
+  searchDomain ="domain";
+  searchGender:any;
+
+  faFilter = faFilter;
+  faXmark = faXmark;
+  faPlus =faPlus;
+
+
+  ///teams: Cards[] = [];
+//  ngOnIt(){
+//   this.fetchStudents();
+//   console.log(this.fetchStudents());
+//  }
+//  fetchStudents() {
+//    this.users;
+//     this.allstudents = this.users.length;
+//   };
+
+// renderPage(event: number) {
+//   this.pagination = event;
+  
+// }
+
+
+apply(){
+  if (!this.searchName ) { 
+    alert("Enter user's Name to search")
+    return this.search;
+  }
+  this.search = [];
+  
+  for(const item of this.users)
+    if((item['first_name'].toLowerCase()).includes(this.searchName.toLowerCase() ) || 
+    (item['last_name'].toLowerCase()).includes(this.searchName.toLowerCase()) ||
+    item['gender'] === this.searchGender ||
+    item['domain'] === this.searchDomain ||
+    this.searchAvailable === "Available"
+    ){
+      this.search.push(item);
+    }
+   
+    if (!this.searchName ) { 
+      alert("Enter user's Name to search")
+      return this.search;
+    }
+   
+  if (!this.searchGender) return this.search;
+  if (!this.searchDomain) return this.search;
+  if (!this.searchAvailable) return this.search;
+    return this.search;
+}
+
+ newcard(){
+  ///this.teams.push(new Cards());
+ }
+
+ adduser(item:any){
+  this.id = this.cards.map((data:any) => data.id)
+  var id = this.id.slice(-1);
+  console.log(this.cards)
+  if(this.cards.length === 0 || item.id != id){
+    this.cards.push(item);
+    console.log(this.users)
+  }
+}
+
+// find():any{
+//    this.users.map(a => 
+
+//    { if(a.gender === this.searchGender){     
+//       console.log(a)
+//         }
+//       });
+   
+// }
+removeUser(card:any){
+    var num = card.id;
+     var index = this.cards.findIndex((item: any) => item.id === num);         
+    this.cards.splice(index,1);
+    return this.cards;
+  
+  }
+
+
+
+  
 }
 ///export default Cards{name:string;}
