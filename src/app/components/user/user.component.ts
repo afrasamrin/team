@@ -98,10 +98,10 @@ export class UserComponent {
   id : any;
   pagination:number=0;
   allstudents:any;
-  searchName:any;
-  searchAvailable = "available";
-  searchDomain ="domain";
-  searchGender:any;
+  searchName:string = "";
+  searchAvailable:string = "";
+  searchDomain:string = "";
+  searchGender:string = "";
 
   faFilter = faFilter;
   faXmark = faXmark;
